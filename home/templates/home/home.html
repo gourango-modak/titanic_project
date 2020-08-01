@@ -1,0 +1,94 @@
+{% extends 'base.html' %} 
+
+{% block content%}
+<div class="form-section">
+    <div class="d-flex bg-dark text-white justify-content-around align-items-center">
+        <div>
+            <h1 class="display-3 d-inline">Titanic</h1>
+            <p class="d-inline ml-3">Machine Learning from Disaster</p>
+        </div>
+        <div>
+            <a href="{% url 'predicted' %}" class="btn btn-primary">views</a>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <form action="predict" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-sm-6 ">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" name="name" placeholder="Enter your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="sex">Sex</label>
+                        <select name="sex" class="form-control">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="Age">Age</label>
+                        <input type="text" class="form-control" placeholder="Enter your age" name="age">
+                    </div>
+                    <div class="form-group">
+                        <label for="siblings">Siblings</label>
+                        <input type="text" class="form-control" name="siblings"  placeholder="No of siblings">
+                        <small class="text-muted"># of siblings / spouses aboard the Titanic</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="pclass">PClass</label>
+                        <select name="pclass" class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <small class="text-muted">Ticket class</small>
+                    </div>
+                    
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <label for="cabin">Cabin</label>
+                        <input type="text" class="form-control" name="cabin" placeholder="Enter Cabin Number or Blank">
+                        <small class="text-muted">Cabin number</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="fare">Fare</label>
+                        <input type="text" class="form-control" name="fare" placeholder="Enter Passenger fare">
+                    </div>
+                    <div class="form-group">
+                        <label for="embarked">Embarked</label>
+                        <select name="embarked" class="form-control">
+                            <option value="S">S</option>
+                            <option value="Q">Q</option>
+                            <option value="C">C</option>
+                            <option value="nan">None</option>
+                        </select>
+                        <small class="text-muted">Port of Embarkation</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="ticket">Ticket</label>
+                        <input type="text" class="form-control" name="ticket" placeholder="Enter Ticket number">
+                    </div>
+                    <div class="form-group">
+                        <label for="parch">Parch</label>
+                        <input type="text" class="form-control" name="parch" placeholder="Enter No of Parch">
+                        <small class="text-muted"># of parents / children aboard the Titanic</small>
+                        
+                    </div>
+                    <input type="submit" class="btn btn-primary btn-block" id="submit">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container d-none {{visible}} mt-5 output">
+    <h1 class="display-2 survived">Survived : {{survived}}</h1>
+</div>
+
+{% endblock%}

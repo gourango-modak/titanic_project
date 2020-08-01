@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1 class="bg-dark m-0 p-0 text-white text-center display-2">Predicted Users</h1>
+<div class="container">
+    <div class="mt-5">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <td>Sex</td>
+                    <td>Ticket</td>
+                    <td>Age</td>
+                    <td>Siblings</td>
+                    <td>PClass</td>
+                    <td>Cabin No</td>
+                    <td>Fare</td>
+                    <td>Embarked</td>
+                    <td>Parch</td>
+                    <td>Survived</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for ob in obj%}
+                <tr>
+                    <td>{{ ob.name }}</td>
+                    <td>{{ ob.sex }}</td>
+                    <td>{{ ob.ticket_no }}</td>
+                    <td>{{ ob.age }}</td>
+                    <td>{{ ob.siblings }}</td>
+                    <td>{{ ob.pclass }}</td>
+                    <td>{{ ob.cabin_no }}</td>
+                    <td>{{ ob.fare }}</td>
+                    <td>{{ ob.embarked }}</td>
+                    <td>{{ ob.parch }}</td>
+                    <td>{{ ob.survived }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}
